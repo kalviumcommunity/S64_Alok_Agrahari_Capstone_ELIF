@@ -5,14 +5,14 @@
  
  The ELIF is a web-based platform designed to help users report, search, and claim lost or found items efficiently. It prevents fraudulent claims through a verification system, real-time chat, and a community-based validation process. 
 
-
  Key Features 
 
  1 - Report Lost or Found Items - Users submit details like category, location,description, and images. 
  2 - Item Search & Filtering - Find items based on location, category, and date. 
  3 - Admin Dashboard - Manage reports, handle flagged items, and prevent spam. 
  4 - User Authentication - Users can signup / login for authentication . 
-5 - Reward system (optional) - Encourages users to return items . 
+ 5 - Reward system (optional) - Encourages users to return items . 
+ 6  - Google Maps (optional) - Display item locations for better searchability. 
 
  Frontend 
 
@@ -40,8 +40,6 @@
  •  socket.io - Real time chat configuration. 
  •  Google Maps Api - location based alerts 
 
-
-
  📌 Week 1: Planning & Initial Setup 
  • Day 1- 4: Research & Design 
  • DAY 1- 2 >> Low-fidelity design 
@@ -49,7 +47,6 @@
 
  • Day 5 - 6 : GitHub Setup & Task Management 
  •  Set up GitHub repo (README, issues, projects)
-
 
  📌 Week 2:Backend Development & Authentication 
  • Day 7-9 : Set Up Backend (Node.js + Express) 
@@ -67,7 +64,6 @@
  • Implement PUT API to allow founders to claim lost items and update item status from Lost to Claimed. 
  • Store founder's contact info (email/phone) when claiming an item. 
  
-
 
  📌Week 3: Frontend Development & Core Features 
  •  Day 14: Deploy Backend Server 
