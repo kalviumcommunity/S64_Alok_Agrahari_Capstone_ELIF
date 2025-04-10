@@ -10,7 +10,7 @@ const createItem = async (req, res) => {
     }
 
     // Hardcode user ID till JWT added
-    const userId = new mongoose.Types.ObjectId("67f7cc5bbbe3ac6f1cce103b"); 
+    const userId = new mongoose.Types.ObjectId("67f7cb020e8dc363cb664ec6");
 
     const item = await Item.create({
       name: name.trim(),
@@ -32,4 +32,20 @@ const createItem = async (req, res) => {
   }
 };
 
-module.exports = { createItem };
+// Get API use
+const getAllItems = async (req, res) => {
+  try {
+    const items = await Item.find();
+
+    res.status(200).json({
+      message: "All Items fetched successfully",
+      data: items
+    });
+
+  } catch (error) {
+    console.log("Error while fetching items:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+module.exports = { createItem, getAllItems };
