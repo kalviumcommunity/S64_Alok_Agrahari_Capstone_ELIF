@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Item = require('../models/Item');
 
+// Create Item API
 const createItem = async (req, res) => {
   try {
     const { name, description, location, status, category } = req.body;
@@ -9,7 +10,7 @@ const createItem = async (req, res) => {
       return res.status(400).json({ message: "All fields except image & category are required" });
     }
 
-    // Hardcode user ID till JWT added
+    // Hardcoded user ID for now
     const userId = new mongoose.Types.ObjectId("67f7cb020e8dc363cb664ec6");
 
     const item = await Item.create({
@@ -32,7 +33,7 @@ const createItem = async (req, res) => {
   }
 };
 
-// Get API use
+// Get All Items API
 const getAllItems = async (req, res) => {
   try {
     const items = await Item.find();
@@ -48,4 +49,28 @@ const getAllItems = async (req, res) => {
   }
 };
 
-module.exports = { createItem, getAllItems };
+// Update Item API
+const updateItem = async (req, res) => {
+  try {
+    const item = await Item.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true, runValidators: true }
+    );
+
+    if (!item) {
+      return res.status(404).json({ message: "Item not found" });
+    }
+
+    res.status(200).json({
+      message: "Item updated successfully",
+      data: item
+    });
+
+  } catch (error) {
+    console.log("Error while updating item:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+module.exports = { createItem, getAllItems, updateItem };
