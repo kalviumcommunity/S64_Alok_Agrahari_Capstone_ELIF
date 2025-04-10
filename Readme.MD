@@ -94,3 +94,5 @@
  • Deploy the final version of both the frontend and backend to production (via Render, Netlify, or Vercel). 
  • Ensure the application works well in a production environment. 
  • Submit your final project with: • GitHub repository link • Live demo link • Final documentation (including README, API docs, user guide).
+
+ Render deployment - https://s64-alok-agrahari-capstone-elif-2.onrender.com
