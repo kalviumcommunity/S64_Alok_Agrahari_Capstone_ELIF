@@ -76,6 +76,8 @@ const updateItem = async (req, res) => {
   }
 };
 
+// delete item api
+
 const deleteItem = async (req, res) => {
   try {
     const item = await Item.findByIdAndDelete(req.params.id);
