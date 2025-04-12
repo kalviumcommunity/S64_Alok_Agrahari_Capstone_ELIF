@@ -1,14 +1,19 @@
 const express = require('express');
 const { createItem, getAllItems, updateItem, deleteItem } = require('../controllers/itemController');
+const { protect } = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
-router.post('/create', createItem);
+// Create Item
+router.post('/create', protect, createItem);
 
+// Get All Items
 router.get('/', getAllItems);
 
-router.put('/:id', updateItem);
+// Update Item by ID
+router.put('/:id', protect, updateItem);
 
-router.delete('/:id', deleteItem);
+// Delete Item by ID
+router.delete('/:id', protect, deleteItem);
 
 module.exports = router;
