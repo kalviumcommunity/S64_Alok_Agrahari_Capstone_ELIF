@@ -98,3 +98,5 @@
 
 
  Render deployment - https://s64-alok-agrahari-capstone-elif-2.onrender.com
+
+ Netlify deployment - https://evenlostifound.netlify.app/
