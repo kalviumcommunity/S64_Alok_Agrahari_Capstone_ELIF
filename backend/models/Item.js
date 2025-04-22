@@ -1,5 +1,33 @@
 const mongoose = require('mongoose');
 
+// Define a claim schema as a subdocument
+const claimSchema = new mongoose.Schema({
+  claimant: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  status: {
+    type: String,
+    enum: ['pending', 'approved', 'rejected'],
+    default: 'pending'
+  },
+  message: {
+    type: String,
+    required: true
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
+  responseMessage: {
+    type: String
+  },
+  respondedAt: {
+    type: Date
+  }
+});
+
 const itemSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -17,16 +45,16 @@ const itemSchema = new mongoose.Schema({
   },
 
   image: {
-    type: String, 
+    type: String,  // cloudinary url later
   },
 
   category: {
-    type: String, 
+    type: String,  // mobile, wallet, etc.
     default: 'other',
   },
 
   status: {
-    type: String,   
+    type: String,   // lost / found / claimed
     required: true,
   },
 
@@ -35,6 +63,17 @@ const itemSchema = new mongoose.Schema({
     ref: 'User',
     required: true,
   },
+
+  claims: [claimSchema],
+
+  claimedBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
+
+  claimedAt: {
+    type: Date
+  }
 
 }, { timestamps: true });
 
