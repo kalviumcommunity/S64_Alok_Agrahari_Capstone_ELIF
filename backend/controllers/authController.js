@@ -15,10 +15,14 @@ const signupUser = async (req, res) => {
       return res.status(400).json({ message: "User already exists" });
     }
 
+    // Check if avatar was uploaded and get the URL
+    const avatarUrl = req.file ? req.file.path : undefined;
+
     const user = await User.create({
       username: username.trim(),
       email: email.trim(),
       password,
+      avatar: avatarUrl, // Save avatar URL if provided
     });
 
     const token = generateToken(user._id);
@@ -31,10 +35,12 @@ const signupUser = async (req, res) => {
         _id: user._id,
         username: user.username,
         email: user.email,
+        avatar: user.avatar,
       },
     });
 
   } catch (error) {
+    console.error("Signup error:", error);
     res.status(500).json({ message: "Internal Server Error" });
   }
 };

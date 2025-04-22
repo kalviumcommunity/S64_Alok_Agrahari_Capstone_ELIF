@@ -16,6 +16,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  avatar: {
+    type: String,
+    default: 'https://res.cloudinary.com/demo/image/upload/v1/item-finder/avatars/default-avatar.png',
+  },
 }, { timestamps: true });
 
 // #hash password before saving
